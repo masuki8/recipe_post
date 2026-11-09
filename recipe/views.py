@@ -8,10 +8,18 @@ from django.contrib import messages
 
 class RecipeListView(ListView):
     model = Recipe
+    def get_queryset(self):
+        qs = Recipe.objects.all()
+        keyword = self.request.GET.get("q")
+
+        if keyword:
+            qs = qs.filter(title__contains=keyword)
+
+        return qs
 
 class RecipeCreateView(CreateView):
     model = Recipe
-    fields = ["title", "content", "description"]
+    fields = ["title", "content", "description", "image"]
     success_url = reverse_lazy("recipe:index") 
     
 class RecipeDetailView(DetailView):
@@ -19,7 +27,7 @@ class RecipeDetailView(DetailView):
 
 class RecipeUpdateView(UpdateView):
     model = Recipe
-    fields = ["title", "content", "description"]
+    fields = ["title", "content", "description", "image"]
     success_url = "/"
     
     def get_success_url(self):

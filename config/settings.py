@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "recipe",
     'crispy_forms',
     'crispy_bootstrap4',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +122,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+MEDIA_ROOT = BASE_DIR / Path('media')
+MEDIA_URL = '/media/'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
