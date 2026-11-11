@@ -11,5 +11,6 @@ urlpatterns = [
     
     path('recipe/', include('recipe.urls')),
     path('comment/', include("comment.urls", namespace="comment")),
+    path('staffroom/', include("staffroom.urls", namespace="staffroom")),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
